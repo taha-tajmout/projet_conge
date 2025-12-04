@@ -1,0 +1,112 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="company-logo">
+      
+      </div>
+      <p class="login-subtitle">Système de gestion des congés</p>
+    </div>
+    
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Adresse email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          [(ngModel)]="email" 
+          required 
+          class="form-control"
+          placeholder="entrez votre email"
+          autocomplete="off"
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="motDePasse">Mot de passe:</label>
+        <div class="password-input-container">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="motDePasse" 
+            name="motDePasse" 
+            [(ngModel)]="motDePasse" 
+            required 
+            class="form-control"
+            placeholder="Entrez votre mot de passe"
+            autocomplete="off"
+          >
+          <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+            <span *ngIf="!showPassword">👁️</span>
+            <span *ngIf="showPassword">🔒</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="isLoading || !loginForm.valid"
+      >
+        <span *ngIf="isLoading">Connexion en cours...</span>
+        <span *ngIf="!isLoading">se connecter</span>
+      </button>
+    </form>
+    
+    <div class="footer-text">
+      <p>Besoin d'aide ? <span id="rhContact" class="rh-link" (click)="contactRH()">Contactez le service RH</span></p>
+    </div>
+  </div>
+
+  <!-- Modal de sélection RH -->
+  <div class="modal-overlay" *ngIf="showRhSelection" (click)="closeRhSelection()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Choisir un contact RH</h3>
+        <button class="close-btn" (click)="closeRhSelection()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="rh-list">
+          <div *ngFor="let rhUser of rhUsers" class="rh-item" (click)="selectRhUser(rhUser)">
+            <div class="rh-name">{{ rhUser.nom }}</div>
+            <div class="rh-email">{{ rhUser.email }}</div>
+          </div>
+        </div>
+        <div *ngIf="rhUsers.length === 0" class="no-rh">
+          Aucun utilisateur RH disponible
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de contact RH -->
+  <div class="modal-overlay" *ngIf="showRhModal" (click)="closeRhModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Contacter le service RH</h3>
+        <button class="close-btn" (click)="closeRhModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Contact sélectionné :</strong></p>
+        <div class="selected-contact">
+          <div class="contact-name">{{ selectedRhUser?.nom }}</div>
+          <div class="contact-email">{{ selectedRhUser?.email }}</div>
+        </div>
+        
+        <p><strong>Email du service RH :</strong></p>
+        <div class="email-container">
+          <span class="email-text">{{ selectedRhUser?.email }}</span>
+          <button class="copy-btn" (click)="copyEmail()">Copier</button>
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-primary" (click)="openEmail()">Ouvrir Gmail</button>
+          <button class="btn btn-secondary" (click)="openMailto()">Client Email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

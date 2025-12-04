@@ -1,0 +1,36 @@
+INSTRUCTIONS POUR AJOUTER LE LOGO ADA DANS LE PDF
+
+Pour que votre logo s'affiche dans le PDF, vous devez suivre ces étapes :
+
+1. CONVERTIR L'IMAGE EN BASE64 :
+   - Allez sur un site comme https://base64.guru/converter/encode/image
+   - Uploadez votre fichier logoada.png (ou ada.jpg)
+   - Copiez le code base64 généré
+   -remplacer la  img.src = 'data:image/png;base64,et ensuite le code genere par 64 
+
+2. REMPLACER LE PLACEHOLDER DANS LE CODE :
+   Dans la méthode addLogoToPDF, remplacez cette section :
+
+   // Logo ADA au centre - Rectangle de placeholder pour l'instant
+   doc.setFillColor(240, 240, 240);
+   doc.rect(85, 10, 40, 25, 'F');
+   doc.setFont('helvetica', 'bold');
+   doc.setFontSize(8);
+   doc.text('LOGO ADA', 105, 25, { align: 'center' });
+
+   Par :
+
+   // Ajout du logo ADA (remplacez YOUR_BASE64_STRING par votre image en base64)
+   const logoBase64 = 'data:image/png;base64,YOUR_BASE64_STRING';
+   doc.addImage(logoBase64, 'PNG', 85, 10, 40, 25);
+
+3. ALTERNATIVE SIMPLE :
+   Si vous ne voulez pas utiliser base64, vous pouvez simplement garder le rectangle gris 
+   avec "LOGO ADA" écrit dedans comme placeholder visible.
+
+RÉSULTAT ACTUEL :
+- Votre PDF a maintenant un en-tête professionnel avec les textes en vert
+- Un rectangle gris avec "LOGO ADA" s'affiche au centre
+- Une fois que vous ajouterez le base64, votre vrai logo s'affichera
+
+Le code est maintenant simplifié et fonctionne correctement !

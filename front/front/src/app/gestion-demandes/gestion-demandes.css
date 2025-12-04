@@ -1,0 +1,552 @@
+/* ====================================
+   GESTION DEMANDES - DESIGN MODERNE
+   ==================================== */
+
+/* Variables CSS */
+:root {
+  --primary-green: #2d5c3e;
+  --secondary-green: #4a8759;
+  --accent-green: #5a9a6a;
+  --light-green: #e8f5e8;
+  --success-green: #28a745;
+  --danger-red: #dc3545;
+  --warning-orange: #fd7e14;
+  --border-color: #e0e6ed;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --background-light: #f8fafc;
+  --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-large: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f5e8 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ====================================
+   EN-TÊTE DE LA PAGE
+   ==================================== */
+h2 {
+  color: var(--primary-green);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.02em;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  border-left: 4px solid var(--primary-green);
+}
+
+/* ====================================
+   TABLEAU MODERNE
+   ==================================== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+}
+
+/* En-tête du tableau */
+.table thead {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.table th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+/* Corps du tableau */
+.table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: linear-gradient(135deg, #f8fafc, var(--light-green));
+  transform: translateX(2px);
+}
+
+.table td {
+  padding: 1rem 1.25rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+/* ====================================
+   BOUTONS D'ACTION
+   ==================================== */
+.btn-manage {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: linear-gradient(135deg, #4a8759, #5a9a6a) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-width: 90px !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.btn-manage:hover {
+  background: linear-gradient(135deg, #2d5c3e, #4a8759) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.btn-manage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-manage:hover::before {
+  left: 100%;
+}
+.btn-manage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--secondary-green), var(--accent-green));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-manage:hover {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-manage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+/* ====================================
+   MODAL MODERNE
+   ==================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-container {
+  background: white;
+  padding: 0;
+  border-radius: 12px;
+  width: 85%;
+  max-width: 400px;
+  max-height: 400px;
+  box-shadow: var(--shadow-large);
+  border: 1px solid var(--border-color);
+  animation: slideUp 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Corps de la modal */
+.modal-content {
+  padding: 1rem;
+}
+
+.modal-container h3 {
+  color: var(--primary-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--light-green);
+}
+
+.modal-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.modal-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.modal-label {
+  font-weight: 600;
+  color: var(--primary-green);
+  min-width: 120px;
+  font-size: 0.9rem;
+}
+
+/* ====================================
+   BOUTONS D'ACTION DE LA MODAL
+   ==================================== */
+.action-buttons {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  padding: 1rem !important;
+  background: #f8fafc !important;
+  border-top: 1px solid #e0e6ed !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.btn-accept, .btn-reject {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 0.6rem 1rem !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 40px !important;
+}
+
+.btn-accept {
+  background: linear-gradient(135deg, #28a745, #34ce57) !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.btn-accept:hover {
+  background: linear-gradient(135deg, #218838, #28a745) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.btn-reject {
+  background: linear-gradient(135deg, #dc3545, #e55565) !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.btn-reject:hover {
+  background: linear-gradient(135deg, #c82333, #dc3545) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+}
+
+.btn-clos {
+  background: linear-gradient(135deg, #6c757d, #868e96);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+  min-height: 36px;
+}
+
+.btn-clos:hover {
+  background: linear-gradient(135deg, #5a6268, #6c757d);
+  transform: translateY(-1px);
+}
+
+/* ====================================
+   BOUTON FERMER X EN HAUT À DROITE
+   ==================================== */
+.btn-close-x {
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  opacity: 0.8 !important;
+  z-index: 10 !important;
+}
+
+.btn-close-x:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+.btn-close-x:active {
+  transform: scale(0.95) !important;
+}
+
+/* ====================================
+   SECTION DE REFUS
+   ==================================== */
+.reject-section {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.reject-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: white;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.reject-textarea:focus {
+  outline: none;
+  border-color: var(--danger-red);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.reject-textarea::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .modal-container {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+
+  .action-buttons {
+    padding: 1.5rem;
+  }
+
+  .modal-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-label {
+    min-width: auto;
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .btn-manage {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+  }
+
+.reject-textarea::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ====================================
+   BADGES DE STATUT
+   ==================================== */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pending {
+  background: linear-gradient(135deg, var(--warning-orange), #fd9644);
+  color: white;
+}
+
+.status-approved {
+  background: linear-gradient(135deg, var(--success-green), #34ce57);
+  color: white;
+}
+
+.status-rejected {
+  background: linear-gradient(135deg, var(--danger-red), #e55565);
+  color: white;
+}
+
+/* ====================================
+   ANIMATIONS ET EFFETS
+   ==================================== */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-container {
+  animation: slideInUp 0.6s ease;
+}
+
+h2 {
+  animation: slideInUp 0.4s ease;
+}
+
+/* Effet brillance sur les boutons */
+.btn-accept::before,
+.btn-reject::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-accept:hover::before,
+.btn-reject:hover::before {
+  left: 100%;
+}
+
+/* ====================================
+   ACCESSIBILITÉ
+   ==================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.btn-manage:focus,
+.btn-accept:focus,
+.btn-reject:focus,
+.btn-clos:focus {
+  outline: 2px solid var(--secondary-green);
+  outline-offset: 2px;
+}
+
+.reject-textarea:focus {
+  outline: 2px solid var(--danger-red);
+  outline-offset: 2px;
+}
+}

@@ -1,0 +1,120 @@
+
+<link rel="stylesheet" href="utilisateur-list.css">
+<div class="table-container">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- En-tête avec titre et bouton principal -->
+    <div class="page-header">
+        <h1 class="page-title">
+            <i class="bi bi-people-fill"></i> 
+            Liste des Utilisateurs
+        </h1>
+        <div class="header-actions d-flex gap-3">
+            <button class="add-user-btn" (click)="createUtilisateur()">
+                <i class="bi bi-plus-circle"></i>
+                Ajouter Utilisateur
+            </button>
+            <button class="btn-account d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm" 
+                    (click)="ouvrirModalCompte()">
+              <i class="bi bi-gear-fill"></i>
+              Gérer votre compte
+            </button>
+        </div>
+    </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Statut</th>  
+            <th>Sexe</th> 
+            <th>Solde</th>
+            <th>Email</th>
+            <th>Mot de passe</th>
+            <th>Direction</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+     
+    <tbody>
+        <tr *ngFor="let utilisateur of utilisateurs">
+            <td>{{utilisateur.matricule}}</td>
+            <td>{{utilisateur.nom}}</td>
+            <td>{{utilisateur.prenom}}</td>
+            <td>{{utilisateur.statut}}</td>
+            <td>{{utilisateur.sexe}}</td>
+            <td>{{utilisateur.soldeConge}}</td>
+            <td>{{utilisateur.email}}</td>
+            <td>••••••••</td>
+            <td class="direction-cell">{{utilisateur.direction || 'Non assignée'}}</td>
+            <td>
+                <div class="action-buttons">
+                    <button (click)="updateUtilisateur(utilisateur.matricule)" 
+                            class="btn-action btn-edit" 
+                            title="Modifier">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button (click)="deleteUtilisateur(utilisateur.matricule)" 
+                            class="btn-action btn-delete" 
+                            title="Supprimer">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal pour gérer le compte -->
+<div *ngIf="showAccountModal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3><i class="bi bi-person-gear"></i> Gérer votre compte</h3>
+      <button class="close-btn" (click)="fermerModalCompte()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <!-- Message de succès -->
+      <div *ngIf="showSuccessMessage" class="success-message mb-3">
+        <i class="bi bi-check-circle-fill"></i> 
+        <span>Compte mis à jour avec succès !</span>
+      </div>
+      
+      <form (ngSubmit)="mettreAJourCompte()">
+        <div class="form-group">
+          <label for="email"><i class="bi bi-envelope"></i> Email :</label>
+          <input type="email" id="email" [(ngModel)]="utilisateurModifie.email" name="email" required>
+        </div>
+        
+        <div class="form-group password-group">
+          <label for="motDePasse"><i class="bi bi-lock"></i> Nouveau mot de passe :</label>
+          <div class="password-input-container">
+            <input [type]="showPassword ? 'text' : 'password'" 
+                   id="motDePasse" 
+                   [(ngModel)]="utilisateurModifie.motDePasse" 
+                   name="motDePasse" 
+                   required>
+            <button type="button" 
+                    class="toggle-password" 
+                    (click)="togglePasswordVisibility()"
+                    title="Afficher/Masquer le mot de passe">
+              <span>{{ showPassword ? '🙈' : '👁️' }}</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" (click)="fermerModalCompte()">
+            <i class="bi bi-x-circle"></i> Annuler
+          </button>
+          <button type="submit">
+            <i class="bi bi-check-circle"></i> Mettre à jour
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,530 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  /* Background simple - juste votre image */
+  background: url('../back.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+  margin: auto 0;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.login-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Style pour l'image du logo */
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background: 
+    url('../../assets/ada.jpg') center center no-repeat,
+    linear-gradient(135deg, #4a7c59, #6b8e23);
+  background-size: 60px 60px, cover;
+  border-radius: 50%;
+}
+
+.login-card h2 {
+  color: #2c5530;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.login-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 12, 1, 0.3);
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c5530;
+  font-size: 0.9rem;
+}
+
+/* NOUVEAU DESIGN - Champs de saisie modernes avec effet glassmorphism */
+.form-control {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 253, 249, 0.95));
+  box-shadow: 
+    0 2px 8px rgba(74, 124, 89, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.form-control::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+
+.form-control:hover {
+  border-color: rgba(74, 124, 89, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(74, 124, 89, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4a7c59;
+  box-shadow: 
+    0 6px 20px rgba(74, 124, 89, 0.2),
+    0 0 0 4px rgba(74, 124, 89, 0.1),
+    inset 0 1px 3px rgba(74, 124, 89, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(248, 253, 249, 1));
+  transform: translateY(-2px);
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+/* Styles pour le conteneur du mot de passe avec œil */
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-container input {
+  padding-right: 50px; /* Espace pour le bouton œil */
+  width: 100%;
+}
+
+/* NOUVEAU DESIGN - Bouton œil moderne avec effet de hover élégant */
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.08), rgba(107, 142, 35, 0.08));
+  border: 1px solid rgba(74, 124, 89, 0.15);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
+}
+
+.toggle-password:hover {
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.15), rgba(107, 142, 35, 0.15));
+  border-color: rgba(74, 124, 89, 0.3);
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(74, 124, 89, 0.2);
+}
+
+.toggle-password:active {
+  transform: scale(0.98);
+}
+
+.toggle-password span {
+  font-size: 18px;
+  line-height: 1;
+  filter: grayscale(0.3);
+  transition: filter 0.3s ease;
+}
+
+.toggle-password:hover span {
+  filter: grayscale(0);
+}
+
+.btn {
+  width: 100%;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4a7c59, #6b8e23);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3a6249, #5a7a1a);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.3);
+}
+
+.btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.75rem;
+  background-color: #fdf2f2;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* NOUVEAU DESIGN - Lien RH moderne avec effet de survol élégant */
+.rh-link {
+  color: #4a7c59;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.05), rgba(107, 142, 35, 0.05));
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.rh-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(74, 124, 89, 0.15), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+
+.rh-link:hover {
+  color: #2c5530;
+  background: linear-gradient(135deg, rgba(74, 124, 89, 0.12), rgba(107, 142, 35, 0.12));
+  border-bottom-color: #4a7c59;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 124, 89, 0.15);
+}
+
+.rh-link:hover::before {
+  left: 100%;
+}
+
+.rh-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(74, 124, 89, 0.1);
+}
+
+.loading {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(74, 124, 89, 0.3);
+  border-radius: 50%;
+  border-top-color: #4a7c59;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Styles pour le modal de contact RH */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e1e8e1;
+}
+
+.modal-header h3 {
+  color: #2c5530;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+.modal-body p {
+  color: #2c5530;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.email-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8fdf9;
+  border-radius: 8px;
+  border: 1px solid #e1e8e1;
+}
+
+.email-text {
+  flex: 1;
+  font-family: monospace;
+  color: #2c5530;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.copy-btn {
+  background: #4a7c59;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: #3a6249;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a6268, #495057);
+}
+
+.btn-primary {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Styles pour la liste des RH */
+.rh-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.rh-item {
+  padding: 1rem;
+  border: 1px solid #e1e8e1;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rh-item:hover {
+  background-color: #f8fdf9;
+  border-color: #4a7c59;
+}
+
+.rh-name {
+  font-weight: 600;
+  color: #2c5530;
+  margin-bottom: 0.25rem;
+}
+
+.rh-email {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.no-rh {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+
+.selected-contact {
+  background: #f8fdf9;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e1e8e1;
+  margin-bottom: 1rem;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: #2c5530;
+}
+
+.contact-email {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsive pour petits écrans */
+@media (max-height: 600px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 1.5rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .login-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Pour très petits écrans */
+@media (max-height: 500px) {
+  .company-logo {
+    width: 60px;
+    height: 60px;
+    background-size: 45px 45px, cover;
+  }
+  
+  .login-header {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Responsive pour le modal */
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .email-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons .btn {
+    width: 100%;
+  }
+}

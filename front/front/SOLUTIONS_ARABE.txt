@@ -1,0 +1,48 @@
+SOLUTIONS POUR AFFICHER L'ARABE DANS LE PDF
+=============================================
+
+SOLUTION 1: TRANSLITÉRATION (ACTUELLE - FONCTIONNE MAINTENANT)
+==============================================================
+✅ Plus simple et fiable
+✅ Pas de problèmes d'encodage
+✅ Compatible avec tous les navigateurs
+
+Résultat:
+- AL MAMLAKA AL MAGHRIBIYA
+- WIZARAT AL FILAHA WA AS-SAYD AL BAHRI
+- WA AT-TANMIYA AL QARAWIYA WA AL MIYAH WA AL GHABAT
+
+SOLUTION 2: PDFMAKE AVEC SUPPORT ARABE
+======================================
+Si vous voulez vraiment l'arabe, utilisez PDFMake :
+
+1. Installer PDFMake:
+   npm install pdfmake
+
+2. Télécharger une police arabe (ex: Amiri, Noto Sans Arabic)
+
+3. Remplacer jsPDF par PDFMake dans votre code
+
+4. Configurer la police arabe dans PDFMake
+
+SOLUTION 3: CONVERTIR L'ARABE EN IMAGE
+=====================================
+1. Créer une image PNG avec le texte arabe
+2. L'intégrer comme image dans le PDF
+3. Plus complexe mais résultat parfait
+
+SOLUTION 4: HTML2CANVAS + jsPDF
+===============================
+1. Créer un div HTML avec le texte arabe
+2. Utiliser html2canvas pour le convertir en image
+3. Ajouter l'image au PDF
+
+RECOMMANDATION
+==============
+Pour votre cas, la SOLUTION 1 (translitération) est parfaite car :
+- Simple et fiable
+- Pas de dépendances supplémentaires
+- Lisible et professionnel
+- Fonctionne dans tous les cas
+
+Voulez-vous que j'implémente une des autres solutions ?

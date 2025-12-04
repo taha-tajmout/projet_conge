@@ -1,0 +1,543 @@
+/* ====================================
+   NOUVELLE DEMANDE - DESIGN PROFESSIONNEL
+   ==================================== */
+
+/* Variables CSS */
+:root {
+  --primary-green: #2d5c3e;
+  --secondary-green: #4a8759;
+  --accent-green: #5a9a6a;
+  --light-green: #e8f5e8;
+  --success-green: #28a745;
+  --border-color: #e0e6ed;
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --background-light: #f8fafc;
+  --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-large: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Container principal */
+.nouvelle-demande-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e8f5e8 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ====================================
+   EN-TÊTE MODERNE
+   ==================================== */
+.form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green), var(--accent-green));
+}
+
+.header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--light-green), #d4edda);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-light);
+}
+
+.form-header h2 {
+  color: var(--primary-green);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.form-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ====================================
+   CONTAINER FORMULAIRE
+   ==================================== */
+.form-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.modern-form {
+  padding: 0;
+}
+
+/* ====================================
+   SECTIONS DU FORMULAIRE
+   ==================================== */
+.form-section {
+  padding: 2rem;
+  border-bottom: 1px solid #f1f5f9;
+  border-color: #28a745;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary-green);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--light-green);
+}
+
+/* ====================================
+   LAYOUT RESPONSIVE
+   ==================================== */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====================================
+   GROUPES DE CHAMPS
+   ==================================== */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Labels modernes */
+.modern-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.label-text {
+  margin-right: 0.25rem;
+}
+
+.required {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+/* ====================================
+   INPUTS MODERNES
+   ==================================== */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modern-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  padding-right: 3rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 3px rgba(74, 135, 89, 0.1);
+  background: #fafbfc;
+}
+
+.modern-input:invalid:not(:placeholder-shown) {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.modern-input:valid:not(:placeholder-shown) {
+  border-color: var(--success-green);
+}
+
+.input-icon {
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.modern-input:focus + .input-icon {
+  opacity: 1;
+}
+
+/* Input durée spécial */
+.duration-wrapper {
+  position: relative;
+}
+
+.duration-input {
+  background: var(--background-light) !important;
+  cursor: not-allowed;
+  font-weight: 600;
+  color: var(--secondary-green);
+}
+
+.duration-badge {
+  position: absolute;
+  right: 1rem;
+  background: var(--secondary-green);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* ====================================
+   SELECT MODERNES
+   ==================================== */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modern-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  padding-right: 3rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+  appearance: none;
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 3px rgba(74, 135, 89, 0.1);
+}
+
+.modern-select:invalid {
+  color: var(--text-secondary);
+}
+
+.select-icon {
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.modern-select:focus + .select-icon {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+/* ====================================
+   MESSAGE DE CHARGEMENT
+   ==================================== */
+.loading-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  color: #1565c0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ====================================
+   BOUTONS D'ACTION
+   ==================================== */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--background-light);
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  box-shadow: var(--shadow-light);
+  border: 2px solid transparent;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #388E3C, #4CAF50);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary:disabled {
+  background: #B0BEC5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #868e96);
+  color: white;
+  border: 2px solid #6c757d;
+  box-shadow: var(--shadow-light);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a6268, #6c757d);
+  border-color: #545b62;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Effet de brillance sur les boutons */
+.btn-primary::before,
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover:not(:disabled)::before,
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+@media (max-width: 768px) {
+  .nouvelle-demande-container {
+    padding: 1rem;
+  }
+
+  .form-header {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nouvelle-demande-container {
+    padding: 0.5rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .modern-input,
+  .modern-select {
+    font-size: 0.95rem;
+  }
+
+  .header-icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ====================================
+   ANIMATIONS
+   ==================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-header {
+  animation: fadeInUp 0.6s ease;
+}
+
+.form-container {
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.form-section {
+  animation: fadeInUp 0.6s ease calc(0.1s * var(--section-index, 0)) both;
+}
+
+/* ====================================
+   ÉTATS ET VALIDATIONS
+   ==================================== */
+/* Champs invalides touchés */
+.modern-input.ng-invalid.ng-touched,
+.modern-select.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Champs requis non remplis (même non touchés) */
+.modern-input:invalid:not(:focus),
+.modern-select:invalid:not(:focus) {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+/* Champs requis vides avec attribut required */
+.modern-input[required]:invalid:not(:focus),
+.modern-select[required]:invalid:not(:focus) {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.modern-input.ng-valid.ng-touched,
+.modern-select.ng-valid.ng-touched {
+  border-color: var(--success-green);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* États de focus spéciaux */
+.modern-input:focus,
+.modern-select:focus {
+  background: #fafbfc;
+}
+
+/* Message d'erreur */
+.error-message {
+  margin-top: 0.5rem;
+  color: #dc3545;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Message de succès */
+.success-message {
+  margin-top: 0.5rem;
+  color: var(--success-green);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ====================================
+   ACCESSIBILITÉ
+   ==================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.modern-input:focus,
+.modern-select:focus,
+.btn-primary:focus,
+.btn-secondary:focus {
+  outline: 2px solid var(--secondary-green);
+  outline-offset: 2px;
+}

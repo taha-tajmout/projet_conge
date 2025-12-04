@@ -1,0 +1,330 @@
+/* ====================================
+   MODERN NAVBAR STYLES
+   ==================================== */
+
+.modern-navbar {
+  background: linear-gradient(135deg, #2d5c3e 0%, #4a8759 100%);
+  box-shadow: 0 4px 20px rgba(45, 92, 62, 0.3);
+  padding: 0;
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Section */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.brand-text {
+  letter-spacing: -0.02em;
+}
+
+/* Navigation Links */
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.modern-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.modern-nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modern-nav-link:hover::before {
+  left: 100%;
+}
+
+.modern-nav-link.active {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modern-nav-link svg {
+  transition: transform 0.3s ease;
+}
+
+.modern-nav-link:hover svg {
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* Navbar Actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.modern-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.modern-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modern-logout-btn:active {
+  transform: translateY(0);
+}
+
+.modern-logout-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.modern-logout-btn:hover svg {
+  transform: rotate(-10deg);
+}
+
+/* ====================================
+   SIMPLE PAGE TITLE STYLE
+   ==================================== */
+
+.page-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 15px 20px;
+  border-bottom: 2px solid #4a8759;
+  position: relative;
+}
+
+.page-title {
+  color: #2d5c3e;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+/* Style pour le bouton compte positionné en haut à droite */
+.btn-account {
+  background: linear-gradient(135deg, #4a8759, #5a9a6a);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(74, 135, 89, 0.3);
+  position: relative;
+  top:-40px;
+  right:-40px;
+  overflow: hidden;
+}
+
+.btn-account::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-account:hover {
+  background: linear-gradient(135deg, #3a7049, #4a8759);
+  transform: none !important;
+  box-shadow: 0 6px 16px rgba(74, 135, 89, 0.4);
+}
+
+.btn-account:hover::before {
+  left: 100%;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+  
+  .navbar-nav {
+    gap: 10px;
+  }
+  
+  .modern-nav-link {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .modern-nav-link span {
+    display: none;
+  }
+  
+  .brand-text {
+    font-size: 1.2rem;
+  }
+  
+  .modern-logout-btn {
+    padding: 10px 15px;
+  }
+  
+  .modern-logout-btn span {
+    display: none;
+  }
+  
+  .page-header-container {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .btn-account {
+    position: fixed !important;
+    top: 80px !important;
+    right: 15px !important;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 1.1rem;
+  }
+  
+  .navbar-brand {
+    gap: 8px;
+  }
+  
+  .page-title {
+    font-size: 1.3rem;
+  }
+  
+  .btn-account {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto 0;
+    display: block;
+  }
+}
+
+/* ====================================
+   ANIMATIONS
+   ==================================== */
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.modern-navbar {
+  animation: slideInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====================================
+   ACCESSIBILITY
+   ==================================== */
+
+.modern-nav-link:focus,
+.modern-logout-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

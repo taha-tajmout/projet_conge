@@ -1,0 +1,52 @@
+<!-- Lien Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<nav *ngIf="authService?.isAuthenticated()" class="modern-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.86.66C7.94 17.34 9.5 12.29 17 11v3l4-4-4-4v3z" fill="white"/>
+        <path d="M3.5 4.5C3.5 3.12 4.62 2 6 2s2.5 1.12 2.5 2.5S7.38 7 6 7 3.5 5.88 3.5 4.5z" fill="#a8d8a8"/>
+      </svg>
+      <span class="brand-text">Congés</span>
+    </div>
+    
+    <ul class="navbar-nav">
+      <!-- Pas de lien vers gestion utilisateurs -->
+    </ul>   
+    
+    <div class="navbar-actions">     
+      <button class="modern-logout-btn" (click)="logout()">         
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">           
+          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.59L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" fill="currentColor"/>         
+        </svg>         
+        <span>Déconnexion</span>       
+      </button>          
+    </div>
+  </div>     
+</nav> 
+
+<!-- Header avec titre et bouton compte -->
+<div *ngIf="authService?.isAuthenticated()" class="page-header-container">
+  <h3 class="page-title">{{title}}</h3>
+  
+  <!-- Bouton compte visible seulement pour les utilisateurs non-admin -->
+  <button *ngIf="!authService.isAdmin()" 
+          class="btn-account d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm" 
+          (click)="gererCompte()">
+    <i class="bi bi-gear-fill"></i>
+    Gérer votre compte
+  </button>
+</div> 
+
+<div class="container">     
+  <router-outlet></router-outlet> 
+</div> 
+
+<hr /> 
+
+<footer class="footer">     
+  <div class="container">         
+    <span> </span>     
+  </div> 
+</footer>

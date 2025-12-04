@@ -1,0 +1,40 @@
+// Version alternative - seulement français des deux côtés si l'arabe pose problème
+
+private addLogoToPDF(doc: any): void {
+  // Définir la couleur verte
+  doc.setTextColor(34, 139, 34); // Couleur verte (RGB)
+  
+  // Texte en français (côté gauche) en vert
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.text('ROYAUME DU MAROC', 20, 15);
+  
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('MINISTÈRE DE L\'AGRICULTURE, DE LA PÊCHE MARITIME,', 20, 22);
+  doc.text('DU DÉVELOPPEMENT RURAL ET DES EAUX ET FORÊTS', 20, 27);
+
+  // Même texte à droite mais en français
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text('KINGDOM OF MOROCCO', 190, 15, { align: 'right' });
+  
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('MINISTRY OF AGRICULTURE, MARITIME FISHING,', 190, 22, { align: 'right' });
+  doc.text('RURAL DEVELOPMENT AND WATER AND FORESTS', 190, 27, { align: 'right' });
+
+  // Remettre la couleur noire pour le reste du document
+  doc.setTextColor(0, 0, 0);
+
+  // Texte de l'agence au centre (en noir)
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text('AGENCE POUR LE DÉVELOPPEMENT AGRICOLE', 105, 35, { align: 'center' });
+  doc.setFontSize(8);
+  doc.text('AGRICULTURAL DEVELOPMENT AGENCY', 105, 41, { align: 'center' });
+
+  // Ligne de séparation
+  doc.setLineWidth(0.5);
+  doc.line(20, 50, 190, 50);
+}

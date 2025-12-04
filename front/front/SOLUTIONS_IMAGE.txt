@@ -1,0 +1,45 @@
+SOLUTION ALTERNATIVE - Si le problème persiste
+
+OPTION 1: Intégrer l'image en base64 directement dans le code
+=========================================================
+
+1. Convertissez votre logoada.png en base64:
+   - Allez sur https://base64.guru/converter/encode/image
+   - Uploadez votre logoada.png
+   - Copiez le code base64
+   -je dois remplacer ca  img.src = 'data:image/png;base64,ET
+
+2. Remplacez la méthode loadImageAndGeneratePDF par cette version simple:
+
+private loadImageAndGeneratePDF(doc: any, demande: any): void {
+  // Remplacez VOTRE_IMAGE_BASE64 par le vrai code base64 de votre image
+  const logoBase64 = 'data:image/png;base64,VOTRE_IMAGE_BASE64_ICI';
+  
+  // Créer une image factice avec les données base64
+  const img = new Image();
+  img.onload = () => {
+    this.generatePDFWithImage(doc, demande, img);
+  };
+  img.src = logoBase64;
+}
+
+OPTION 2: Vérifier la configuration Angular
+==========================================
+
+Assurez-vous que dans angular.json, les assets sont bien configurés:
+
+"assets": [
+  "src/favicon.ico",
+  "src/assets"
+]
+
+OPTION 3: Déplacer les images
+============================
+
+1. Copiez logoada.png dans le dossier public/ au lieu de src/assets/
+2. Utilisez le chemin: img.src = 'logoada.png';
+
+TESTS À FAIRE:
+1. Essayez d'abord avec ./assets/
+2. Si ça ne marche pas, utilisez l'option base64
+3. Vérifiez que ng serve fonctionne bien

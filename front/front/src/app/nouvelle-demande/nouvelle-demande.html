@@ -1,0 +1,161 @@
+<div class="nouvelle-demande-container">
+  <!-- En-tête moderne -->
+  <div class="form-header">
+    <div class="header-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" fill="#2d5c3e"/>
+      </svg>
+    </div>
+    <h2>Nouvelle Demande de Congé</h2>
+    <p>Remplissez le formulaire ci-dessous pour soumettre votre demande</p>
+  </div>
+
+  <!-- Formulaire moderne -->
+  <div class="form-container">
+    <form [formGroup]="demandeForm" (ngSubmit)="onSubmit()" #form="ngForm" class="modern-form">
+      
+      <!-- Section Dates -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="#4a8759"/>
+          </svg>
+          Période de congé
+        </h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="modern-label">
+              <span class="label-text">Date de début</span>
+              <span class="required">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="date" formControlName="dateDebut" class="modern-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="modern-label">
+              <span class="label-text">Date de fin</span>
+              <span class="required">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="date" formControlName="dateFin" class="modern-input" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="modern-label">
+            <span class="label-text">Durée calculée</span>
+          </label>
+          <div class="input-wrapper duration-wrapper">
+            <input type="text" formControlName="duree" class="modern-input duration-input" readonly>
+            <div class="duration-badge">jours</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Type -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#4a8759"/>
+          </svg>
+          Type de congé
+        </h3>
+
+        <div class="form-group">
+          <label class="modern-label">
+            <span class="label-text">Catégorie</span>
+            <span class="required">*</span>
+          </label>
+          <div class="select-wrapper">
+            <select formControlName="typeDemande" class="modern-select" required>
+              <option value="" disabled selected>Choisissez une catégorie</option>
+              <option value="administratif">Congé Administratif</option>
+              <option value="exceptionnelle">Congé Exceptionnel</option>
+            </select>
+            <div class="select-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5z" fill="#6c757d"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="demandeForm.get('typeDemande')?.value === 'exceptionnelle'">
+          <label class="modern-label">
+            <span class="label-text">Sous-catégorie</span>
+            <span class="required">*</span>
+          </label>
+          <div class="select-wrapper">
+            <select formControlName="sousType" class="modern-select" required>
+              <option value="" disabled selected>Précisez le type</option>
+              <option *ngFor="let type of sousTypes" [value]="type">{{type}}</option>
+            </select>
+            <div class="select-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5z" fill="#6c757d"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Intérimaire -->
+      <div class="form-section">
+        <h3 class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M16 7c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4 4-1.79 4-4zM12 14c-3.31 0-6 2.69-6 6h12c0-3.31-2.69-6-6-6z" fill="#4a8759"/>
+          </svg>
+          Personne de remplacement
+        </h3>
+
+        <div class="form-group">
+          <label class="modern-label">
+            <span class="label-text">Intérimaire désigné</span>
+            <span class="required">*</span>
+          </label>
+          <div class="select-wrapper">
+            <select formControlName="interime" class="modern-select" required>
+              <option [ngValue]="null" disabled selected>-- Sélectionnez un intérimaire --</option>
+              <option *ngFor="let user of interimaires" [value]="user.matricule">
+                {{ user.matricule }} - {{ user.nomComplet }} ({{user.statut}}) 
+              </option>
+            </select>
+            <div class="select-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5z" fill="#6c757d"/>
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="interimaires.length === 0" class="loading-message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12,4a8,8 0 0,1 7.89,6.7 1.53,1.53 0 0,0 1.49 1.3,1.5,1.5 0 0,0 1.48-1.75 11,11 0 0,0-21.72,0A1.5,1.5 0 0,0 2.62,12a1.53,1.53 0 0,0 1.49-1.3A8,8 0 0,1 12,4Z" fill="#6c757d">
+                <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/>
+              </path>
+            </svg>
+            Chargement des intérimaires disponibles...
+          </div>
+        </div>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="annuler()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+          </svg>
+          Annuler
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="!demandeForm.valid">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+          </svg>
+          Soumettre la demande
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

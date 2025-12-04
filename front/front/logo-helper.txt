@@ -1,0 +1,37 @@
+// Version avec logo - à remplacer dans addLogoToPDF si vous voulez inclure le logo
+
+private addLogoToPDF(doc: any): void {
+  // Texte en français (côté gauche)
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.text('ROYAUME DU MAROC', 20, 15);
+  
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('MINISTÈRE DE L\'AGRICULTURE, DE LA PÊCHE MARITIME,', 20, 22);
+  doc.text('DU DÉVELOPPEMENT RURAL ET DES EAUX ET FORÊTS', 20, 27);
+
+  // Pour ajouter le logo, remplacez cette ligne par votre image en base64
+  // doc.addImage('data:image/jpeg;base64,YOUR_BASE64_STRING', 'JPEG', 85, 10, 40, 25);
+
+  // Texte de l'agence au centre
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text('وكالة التنمية الفلاحية', 105, 35, { align: 'center' });
+  doc.setFontSize(8);
+  doc.text('AGENCE POUR LE DÉVELOPPEMENT AGRICOLE', 105, 41, { align: 'center' });
+
+  // Texte en arabe (côté droit)
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.text('المملكة المغربية', 190, 15, { align: 'right' });
+  
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text('وزارة الفلاحة والصيد البحري', 190, 22, { align: 'right' });
+  doc.text('والتنمية القروية والمياه والغابات', 190, 27, { align: 'right' });
+
+  // Ligne de séparation
+  doc.setLineWidth(0.5);
+  doc.line(20, 50, 190, 50);
+}
